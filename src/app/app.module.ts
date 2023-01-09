@@ -6,15 +6,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegistroComponent } from './pages/registro/registro.component';
+import { LoginComponent } from './pages/usuarios/login/login.component';
+import { RegistroComponent } from './pages/usuarios/registro/registro.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { ListarUsuariosComponent } from './pages/usuarios/listar-usuarios/listar-usuarios.component';
+import { UsuarioComponent } from './pages/usuarios/usuario/usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    NavbarComponent,
+    ListarUsuariosComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

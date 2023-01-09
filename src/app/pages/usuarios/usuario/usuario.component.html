@@ -1,0 +1,70 @@
+<h1>Editar usuario <small>{{uid}}</small></h1>
+<hr>
+
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-danger" routerLink="/usuarios">
+        <i class="fa fa-arrow-left"></i>
+        Regresar
+    </button>
+    </div>
+</div>
+
+<div class="row animate__animated animate__fadeIn animate__faster">
+    <div class="col">
+
+
+        <form (ngSubmit)="actualizarUsuario( f )" #f="ngForm">
+
+          <div class="form-group">
+            <label>Estado</label>
+            <br>
+            <button *ngIf="usuario.estado" (click)="usuario.estado = false" class="btn btn-outline-success w-50" type="button">
+                <i class="fa fa-smile"></i>
+                Activo
+            </button>
+
+            <button *ngIf="!usuario.estado" (click)="usuario.estado = true" class="btn btn-outline-danger w-50" type="button">
+                <i class="fa fa-dizzy"></i>
+                Innactivo
+            </button>
+           </div>
+
+           <div class="form-group">
+            <label>Google</label>
+            <br>
+            <button *ngIf="usuario.google" (click)="usuario.google = false" class="btn btn-outline-success w-50" type="button">
+                <i class="fa fa-smile"></i>
+                Activo
+            </button>
+
+            <button *ngIf="!usuario.google" (click)="usuario.google = true" class="btn btn-outline-danger w-50" type="button">
+                <i class="fa fa-dizzy"></i>
+                Innactivo
+            </button>
+           </div>
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre del usuario" name="nombre" [(ngModel)]="usuario.nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Correo</label>
+                <input type="text" class="form-control" placeholder="Correo del usuario" name="correo" [(ngModel)]="usuario.correo" required>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-25">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

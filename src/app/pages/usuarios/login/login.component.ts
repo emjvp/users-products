@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UsuarioModel } from '../../models/usuario.model';
-import { AuthService } from '../../services/auth.service';
+import { UsuarioAuthModel } from '../../../models/usuarioAuth.model';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -12,9 +12,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  usuario = new UsuarioModel();
+  usuario = new UsuarioAuthModel();
   recordarme = false;
 
   constructor(
@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/home');
 
         }, (err) => {
-          console.log(err.error.msg);
-          alert(err.error.msg)
+          console.log(err.error.errors[0].msg)
+          alert(err.error.errors[0].msg)
         });
   }
 

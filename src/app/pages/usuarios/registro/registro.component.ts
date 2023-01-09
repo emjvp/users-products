@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NuevoUsuarioModel } from '../../models/nuevo-usuario.model';
+import { Component } from '@angular/core';
+import { UsuarioModel } from '../../../models/usuario.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -11,9 +11,9 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent {
 
-  usuario: NuevoUsuarioModel = new NuevoUsuarioModel();
+  usuario: UsuarioModel = new UsuarioModel();
   recordarme = false;
   constructor( private authServ: AuthService, private router: Router ) { }
 
@@ -34,8 +34,8 @@ export class RegistroComponent implements OnInit {
 
         },
         (err) => {
-          console.log(err.error.msg);
-          alert(err.error.msg)
+          console.log(err.error.errors[0].msg);
+          alert(err.error.errors[0].msg)
         });
   }
 

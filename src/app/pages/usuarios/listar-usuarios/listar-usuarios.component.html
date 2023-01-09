@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
+          </div>
+          <div class="table-responsive">
+              <table class="table no-wrap user-table mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">Estado</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">Google</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">Correo electrónico</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let userReq of usuariosReq; index as i">
+                    <td class="pl-4">{{ i + 1 }}</td>
+                    <td>
+                        <h5 class="font-medium mb-0">{{ userReq.nombre }}</h5>
+                    </td>
+
+                    <td>
+                      <span class="text-muted">{{ userReq.estado }}</span><br>
+                    </td>
+                    <td>
+                      <span class="text-muted">{{ userReq.google }}</span><br>
+                    </td>
+                    <td>
+                      <span class="text-muted">{{ userReq.correo }}</span><br>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['/usuarios', userReq.uid]" ><i class="fa fa-edit"></i> </button>
+                      <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash" (click)="eliminarUsuario( userReq.uid )"></i> </button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

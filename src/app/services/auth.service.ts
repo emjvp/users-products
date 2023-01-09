@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UsuarioModel } from '../models/usuario.model';
+import { UsuarioAuthModel } from '../models/usuarioAuth.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  login( usuario: UsuarioModel) {
+  login( usuario: UsuarioAuthModel) {
 
     const authData = {
       ...usuario,
@@ -43,7 +43,7 @@ export class AuthService {
        );
   }
 
-  nuevoUsuario( usuario: UsuarioModel ) {
+  nuevoUsuario( usuario: UsuarioAuthModel ) {
 
     const authData = {
       ...usuario,
@@ -52,8 +52,8 @@ export class AuthService {
 
     return this.http.post(`${ this.url }/usuarios`, authData)
                .pipe(
-                 map( resp => {
-                    // this.guardarToken( resp['idToken'] );
+                 map( (resp: any) => {
+                    this.guardarToken( resp['token'] );
                     return resp;
                  })
                 );
