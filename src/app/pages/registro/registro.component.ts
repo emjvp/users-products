@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioModel } from '../../models/usuario.model';
+import { NuevoUsuarioModel } from '../../models/nuevo-usuario.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,12 +13,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegistroComponent implements OnInit {
 
-  usuario: UsuarioModel = new UsuarioModel();
+  usuario: NuevoUsuarioModel = new NuevoUsuarioModel();
   recordarme = false;
   constructor( private authServ: AuthService, private router: Router ) { }
 
   ngOnInit() {
-    // this.usuario = new UsuarioModel();
   }
 
   onSubmit( form: NgForm ) {
@@ -28,16 +27,15 @@ export class RegistroComponent implements OnInit {
     this.authServ.nuevoUsuario( this.usuario )
         .subscribe( resp => {
 
-          if ( this.recordarme ) {
-            localStorage.setItem('email', this.usuario.email);
-          }
+
           console.log(resp);
 
           this.router.navigateByUrl('/home');
 
         },
         (err) => {
-          console.log(err.error.error.message);
+          console.log(err.error.msg);
+          alert(err.error.msg)
         });
   }
 

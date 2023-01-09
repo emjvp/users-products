@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel } from '../models/usuario.model';
-
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,8 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  private url = 'https://identitytoolkit.googleapis.com/v1/accounts';
-  private apikey = 'AIzaSyDOWfRnrgPVv845bRiufXawTjR3vhapfZE';
+  private url = 'https://prueba-tecnica-idecide.azurewebsites.net/api';
 
   private userToken: string = '';
   // Registro
@@ -35,11 +33,11 @@ export class AuthService {
     };
 
     return this.http.post(
-      `${ this.url }:signInWithPassword?key=${ this.apikey }`,
+      `${ this.url }/auth/login`,
       authData ).pipe(
-        map( resp => {
+        map( (resp: any) => {
 
-          //  this.guardarToken( resp['idToken'] );
+           this.guardarToken( resp['token'] );
            return resp;
         })
        );
@@ -52,7 +50,7 @@ export class AuthService {
       returnSecureToken: true
     };
 
-    return this.http.post(`${ this.url }:signUp?key=${ this.apikey }`, authData)
+    return this.http.post(`${ this.url }/usuarios`, authData)
                .pipe(
                  map( resp => {
                     // this.guardarToken( resp['idToken'] );
@@ -62,7 +60,7 @@ export class AuthService {
   }
 
   private guardarToken( idToken: string ) {
-    // this.userToken = idToken;
+    this.userToken = idToken;
     localStorage.setItem('token', idToken);
 
     let hoy = new Date();
