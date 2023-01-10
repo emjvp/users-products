@@ -13,9 +13,9 @@ export class ListarCategoriasComponent implements OnInit {
   constructor(private CatServ: CategoriasService){}
 
   ngOnInit(): void {
-    this.CatServ.getCategorias().subscribe((resp: any) =>{
-      this.categorias = resp;
-    }, (err)=>console.log);
+    // this.CatServ.getCategorias().subscribe((resp: any) =>{
+    //   this.categorias = resp;
+    // }, (err)=>console.log(err));
   }
 
 

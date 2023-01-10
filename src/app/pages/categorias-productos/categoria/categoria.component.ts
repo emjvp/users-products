@@ -34,21 +34,21 @@ export class CategoriaComponent implements OnInit {
       return;
     }
 
-    let peticion: Observable<any>;
+    // let peticion: Observable<any>;
 
-    if ( this.categoria._id )
-    {
-      peticion = this.catServ.actualizarCategoria( this.categoria );
+    // if ( this.categoria._id )
+    // {
+    //   peticion = this.catServ.actualizarCategoria( this.categoria );
 
-    } else {
+    // } else {
 
-      peticion = this.catServ.createCategoria();
-    }
+    //   peticion = this.catServ.createCategoria();
+    // }
 
-    peticion.subscribe((resp: any) => {
-      console.log(resp);
-      this.router.navigateByUrl('/categorias-productos');
-    })
+    // peticion.subscribe((resp: any) => {
+    //   console.log(resp);
+    //   // this.router.navigateByUrl('/categorias-productos');
+    // })
     // peticion.subscribe( resp => {
     //   Swal.fire({
     //     title: this.heroe.nombre,

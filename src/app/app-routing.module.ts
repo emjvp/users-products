@@ -12,13 +12,13 @@ import { CategoriaComponent } from './pages/categorias-productos/categoria/categ
 
 const routes: Routes = [
   // { path: 'home'    , component: HomeComponent, canActivate: [ AuthGuard ] },
-  { path: 'home'    , component: HomeComponent },
+  { path: 'home'    , component: HomeComponent, canActivate: [ AuthGuard ]},
   { path: 'registro', component: RegistroComponent },
   { path: 'login'   , component: LoginComponent },
-  { path: 'usuarios', component: ListarUsuariosComponent},
-  { path: 'categorias-productos', component: ListarCategoriasComponent},
-  { path: 'categoria-producto/:_id', component: CategoriaComponent},
-  { path: 'usuarios/:uid', component: UsuarioComponent },
+  { path: 'usuarios', component: ListarUsuariosComponent, canActivate: [ AuthGuard ]},
+  { path: 'categorias-productos', component: ListarCategoriasComponent,  canActivate: [ AuthGuard ]},
+  { path: 'categoria-producto/:_id', component: CategoriaComponent,  canActivate: [ AuthGuard ]},
+  { path: 'usuarios/:uid', component: UsuarioComponent ,  canActivate: [ AuthGuard ]},
   { path: '**', redirectTo: 'login' }
 ];
 
