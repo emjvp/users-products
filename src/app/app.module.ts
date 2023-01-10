@@ -11,6 +11,8 @@ import { RegistroComponent } from './pages/usuarios/registro/registro.component'
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { ListarUsuariosComponent } from './pages/usuarios/listar-usuarios/listar-usuarios.component';
 import { UsuarioComponent } from './pages/usuarios/usuario/usuario.component';
+import { ListarCategoriasComponent } from './pages/categorias-productos/listar-categorias/listar-categorias.component';
+import { CategoriaComponent } from './pages/categorias-productos/categoria/categoria.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { UsuarioComponent } from './pages/usuarios/usuario/usuario.component';
     RegistroComponent,
     NavbarComponent,
     ListarUsuariosComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ListarCategoriasComponent,
+    CategoriaComponent
+
   ],
   imports: [
     BrowserModule,

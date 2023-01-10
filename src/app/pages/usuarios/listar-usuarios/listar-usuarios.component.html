@@ -3,7 +3,7 @@
   <div class="col-md-12">
       <div class="card">
           <div class="card-body">
-              <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
+              <h5 class="card-title text-uppercase mb-0">Administrar Usuarios</h5>
           </div>
           <div class="table-responsive">
               <table class="table no-wrap user-table mb-0">
@@ -22,13 +22,15 @@
                     <td>
                         <h5 class="font-medium mb-0">{{ userReq.nombre }}</h5>
                     </td>
+                    <td>
+                      <span *ngIf="userReq.estado == true" class="badge badge-success">Activo</span>
+                      <span *ngIf="userReq.estado == false" class="badge badge-danger">Innactivo</span>
+                    </td>
+                    <td>
+                      <span *ngIf="userReq.google == true" class="badge badge-success">Activo</span>
+                      <span *ngIf="userReq.google == false" class="badge badge-danger">Innactivo</span>
+                    </td>
 
-                    <td>
-                      <span class="text-muted">{{ userReq.estado }}</span><br>
-                    </td>
-                    <td>
-                      <span class="text-muted">{{ userReq.google }}</span><br>
-                    </td>
                     <td>
                       <span class="text-muted">{{ userReq.correo }}</span><br>
                     </td>

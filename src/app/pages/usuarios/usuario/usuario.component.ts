@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { UsuarioRequested } from 'src/app/models/usuario-requested.model';
-import { UsuariosService } from 'src/app/services/usuarios.service';
+import { UsuarioRequested } from 'src/app/models/usuarios/usuario-requested.model';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-usuario',
@@ -33,7 +33,10 @@ export class UsuarioComponent implements OnInit {
       {
         this.usuario = resp
         this.router.navigateByUrl('/usuarios');
-    })
+    },(err) => {
+      console.log(err.error.errors[0].msg);
+      alert(err.error.errors[0].msg)
+    });
 
   }
 

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { UsuarioModel } from '../../../models/usuario.model';
+import { UsuarioModel } from '../../../models/usuarios/usuario.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../../services/auth.service';
+import { UsuariosService } from '../../../services/usuarios/usuarios.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class RegistroComponent {
 
   usuario: UsuarioModel = new UsuarioModel();
   recordarme = false;
-  constructor( private authServ: AuthService, private router: Router ) { }
+  constructor( private usuarioServ: UsuariosService, private router: Router ) { }
 
   ngOnInit() {
   }
@@ -24,16 +24,13 @@ export class RegistroComponent {
 
     if (form.invalid) { return; }
 
-    this.authServ.nuevoUsuario( this.usuario )
-        .subscribe( resp => {
+    this.usuarioServ.nuevoUsuario( this.usuario )
+        .subscribe( (resp: any)=> {
 
-
-          console.log(resp);
 
           this.router.navigateByUrl('/home');
 
-        },
-        (err) => {
+        },(err: any) => {
           console.log(err.error.errors[0].msg);
           alert(err.error.errors[0].msg)
         });

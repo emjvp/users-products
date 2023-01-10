@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { UsuarioRequested } from '../models/usuario-requested.model';
+import { UsuarioRequested } from '../../models/usuarios/usuario-requested.model';
+import { UsuarioAuthModel } from 'src/app/models/usuarios/usuarioAuth.model';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,8 @@ export class UsuariosService {
   private url = 'https://prueba-tecnica-idecide.azurewebsites.net/api';
 
 
-  constructor( private http: HttpClient ) {
-    // const test = this.listarUsuarios();
-    // console.log(test)
+  constructor( private http: HttpClient, private authServ: AuthService ) {
+
   }
 
   listarUsuarios(){
@@ -22,6 +23,22 @@ export class UsuariosService {
         return resp['usuarios'];
      })
     );
+  }
+
+  nuevoUsuario( usuario: UsuarioAuthModel ) {
+
+    const authData = {
+      ...usuario,
+      returnSecureToken: true
+    };
+
+    return this.http.post(`${ this.url }/usuarios`, authData)
+               .pipe(
+                 map( (resp: any) => {
+                    this.authServ.guardarToken( resp['token'] );
+                    return resp;
+                 })
+                );
   }
 
   actualizarUsuario(uid: any, usuario: UsuarioRequested)

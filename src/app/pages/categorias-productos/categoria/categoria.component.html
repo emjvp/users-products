@@ -1,0 +1,42 @@
+<h1>Categoría: <small></small></h1>
+<hr>
+
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-danger" routerLink="/categorias-productos">
+        <i class="fa fa-arrow-left"></i>
+        Regresar
+    </button>
+    </div>
+</div>
+
+<div class="row animate__animated animate__fadeIn animate__faster">
+    <div class="col">
+
+
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+            <div class="form-group">
+                <label>Categoría ID</label>
+                <input type="text" placeholder="Categoría ID" class="form-control" disabled="true" name="id" [(ngModel)]="categoria._id">
+            </div>
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre del categoría" name="nombre" [(ngModel)]="categoria.nombre" required>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-25">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

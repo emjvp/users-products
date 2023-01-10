@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UsuarioAuthModel } from '../models/usuarioAuth.model';
+import { UsuarioAuthModel } from '../../../models/usuarios/usuarioAuth.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -11,11 +11,7 @@ export class AuthService {
   private url = 'https://prueba-tecnica-idecide.azurewebsites.net/api';
 
   private userToken: string = '';
-  // Registro
-  // https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
 
-  // Login
-  // https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
   constructor( private http: HttpClient ) {
     this.leerToken();
@@ -43,23 +39,8 @@ export class AuthService {
        );
   }
 
-  nuevoUsuario( usuario: UsuarioAuthModel ) {
 
-    const authData = {
-      ...usuario,
-      returnSecureToken: true
-    };
-
-    return this.http.post(`${ this.url }/usuarios`, authData)
-               .pipe(
-                 map( (resp: any) => {
-                    this.guardarToken( resp['token'] );
-                    return resp;
-                 })
-                );
-  }
-
-  private guardarToken( idToken: string ) {
+  public guardarToken( idToken: string ) {
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
 

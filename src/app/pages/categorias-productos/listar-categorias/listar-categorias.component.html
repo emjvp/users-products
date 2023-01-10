@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col text-right">
+      <button routerLink="/categoria-producto/nueva" class="btn btn-primary">
+          <i class="fa fa-plus"></i>
+          Agregar
+      </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="card-title text-uppercase mb-0">Administrar Categorias de Productos</h5>
+          </div>
+
+          <div class="table-responsive">
+              <table class="table no-wrap user-table mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">Usuario Asociado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cat of categorias; index as i">
+                    <td class="pl-4">{{ i + 1 }}</td>
+                    <td>
+                        <h5 class="font-medium mb-0">{{ cat.nombre }}</h5>
+                    </td>
+                    <td>
+                      <span class="text-muted">{{ cat.usuario.nombre }}</span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['/categoria-producto', cat._id]" ><i class="fa fa-file-text-o"></i> </button>
+                      <!-- <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['/categorias', cat.uid]" ><i class="fa fa-edit"></i> </button>
+                      <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash" (click)="eliminarUsuario( cat.uid )"></i> </button> -->
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

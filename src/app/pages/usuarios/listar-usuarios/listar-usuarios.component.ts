@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UsuariosService } from 'src/app/services/usuarios.service';
-import { UsuarioRequested } from 'src/app/models/usuario-requested.model';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+import { UsuarioRequested } from 'src/app/models/usuarios/usuario-requested.model';
 
 @Component({
   selector: 'app-listar-usuarios',
@@ -16,7 +16,10 @@ export class ListarUsuariosComponent  {
     this.usuariosSer.listarUsuarios()
         .subscribe( (resp: any) => {
           this.usuariosReq = resp;
-        } );
+        }, (err) => {
+          console.log(err.error.errors[0].msg);
+          alert(err.error.errors[0].msg)
+        });
 
 
   }

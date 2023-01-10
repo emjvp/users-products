@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UsuarioAuthModel } from '../../../models/usuarioAuth.model';
-import { AuthService } from '../../../services/auth.service';
+import { UsuarioAuthModel } from '../../../models/usuarios/usuarioAuth.model';
+import { AuthService } from '../../../services/usuarios/auth/auth.service';
 
 
 @Component({
